@@ -5,7 +5,7 @@ volumes:
 
 services:
   db:
-    image: postgres
+    image: postgres:16-alpine
     restart: always
     env_file:
       - .env.local
@@ -14,3 +14,12 @@ services:
     volumes:
       - local_postgres_data:/var/lib/postgresql/data
 
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    env_file:
+      - .env.local
+    ports:
+      - 333:80
+    depends_on:
+      - db
