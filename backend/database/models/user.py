@@ -1,8 +1,6 @@
 from sqlalchemy import Column, Integer, Text, Boolean
-from base_model import Base
-from sqlalchemy import Column, Integer, Text, Boolean
 from sqlalchemy.orm import validates
-from base_model import Base
+from database.base_model import Base
 import re
 
 class User(Base):

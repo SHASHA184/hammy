@@ -10,6 +10,7 @@ sys.path.append(str(pathlib.Path(__file__).resolve(strict=True).parent.parent))
 
 
 from database.conn import url
+from database.models import *
 from database.base_model import Base
 
 logger.debug(url)
