@@ -1,16 +1,15 @@
+import sys
 import asyncio
 import pathlib
-import sys
 from loguru import logger
 from alembic import context, config
 from sqlalchemy.ext.asyncio import create_async_engine
-
 
 sys.path.append(str(pathlib.Path(__file__).resolve(strict=True).parent.parent))
 
 
 from database.conn import url
-from database.base_model import Base
+from database.models.user import Base
 
 logger.debug(url)
 
