@@ -1,16 +1,10 @@
 from sqlalchemy import Column, Integer, Text, Boolean
-# from base_model import Base
 from sqlalchemy import Column, Integer, Text, Boolean
 from sqlalchemy.orm import validates
-# from .base_model import Base
 import re
 
-
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.schema import MetaData
 
-
-# metadata_user = MetaData(schema="user")
 Base = declarative_base()
 metadata = Base.metadata
 
