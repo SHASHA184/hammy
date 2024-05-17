@@ -1,12 +1,13 @@
 import os
-from typing import AsyncGenerator
 from dotenv import load_dotenv
+from typing import AsyncGenerator
+
 dotenv_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), '.env.local')
 load_dotenv(dotenv_path)
 from fastapi import HTTPException
+from sqlalchemy.orm import sessionmaker
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
-from sqlalchemy.orm import sessionmaker
 
 # TODO import from setup.py
 url = f"postgresql+asyncpg://{os.getenv('POSTGRES_USER')}:" \
