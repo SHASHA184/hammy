@@ -12,7 +12,6 @@ class Order(Base):
 
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey('users.id'))
-    shipping_address_id = Column(Integer, ForeignKey('shipping_addresses.id'))
     competed = Column(Boolean, default=False)
     sended = Column(Boolean, default=False)
     total_price = Column(Float)

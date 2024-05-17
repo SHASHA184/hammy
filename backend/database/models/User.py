@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, Text, Boolean
+from sqlalchemy import Column, Integer, Text, Boolean, ForeignKey
 from sqlalchemy.orm import validates
 from database.base_model import Base
 import re
@@ -9,7 +9,7 @@ class User(Base):
     id = Column(Integer, primary_key=True)
     name = Column(Text)
     email = Column(Text, unique=True)
-    address = Column(Text)
+    shipping_address_id = Column(Integer, ForeignKey('shipping_addresses.id'))
     phone_number = Column(Text)
     password = Column(Text)
     is_admin = Column(Boolean, default=False)
