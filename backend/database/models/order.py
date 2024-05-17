@@ -4,7 +4,7 @@ from sqlalchemy import Column, Integer, Boolean, ForeignKey, Float, DateTime
 from sqlalchemy.orm import validates
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
-from .OrderItem import OrderItem
+from .order_item import OrderItem
 from database.base_model import Base
 
 class Order(Base):
