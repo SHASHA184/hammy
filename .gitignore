@@ -86,13 +86,13 @@ yarn-error.log
 
 # Ruby / CocoaPods
 **/Pods/
-mobile//vendor/bundle/
+vendor/bundle/
 
 # Temporary files created by Metro to check the health of the file watcher
-mobile/.metro-health-check*
+.metro-health-check*
 
 # testing
-mobile/coverage
+coverage
 
 # Yarn
 mobile/.yarn/*
