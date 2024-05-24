@@ -1,12 +1,7 @@
 import React from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
+import { SafeAreaView, ScrollView, useColorScheme, View } from 'react-native';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
+import Typography from '../Typography';
 
 const Root = () => {
   const colorScheme = useColorScheme();
@@ -22,9 +17,9 @@ const Root = () => {
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
         <View style={backgroundStyle}>
-          <Text style={{fontSize: 20, fontWeight: 'bold'}}>
+          <Typography type="plain">
             ✨Pan roman✨, vipustite iz podvala
-          </Text>
+          </Typography>
         </View>
       </ScrollView>
     </SafeAreaView>
