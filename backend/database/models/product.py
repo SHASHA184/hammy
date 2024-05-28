@@ -27,3 +27,9 @@ class Product(Base):
         statement = select(cls)
         result = await db.execute(statement)
         return result.scalars().all()
+
+    @classmethod
+    async def get(cls, db, product_id):
+        statement = select(cls).where(cls.id == product_id)
+        result = await db.execute(statement)
+        return result.scalar()
