@@ -1,15 +1,17 @@
 import { StyleSheet } from 'react-native';
+import colors from '../../../theme/colors';
+import spacing from '../../../theme/spacing';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5ECE0',
+    backgroundColor: colors.beige,
   },
   googleButton: {
-    marginTop: 20,
-    marginBottom: 30,
+    marginTop: spacing(4),
+    marginBottom: spacing(6),
   },
 });
 
