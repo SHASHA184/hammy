@@ -4,6 +4,10 @@
     {
       "path": "src/assets/fonts/ABeeZee-Regular.ttf",
       "sha1": "3228dce6045041ccde6ce7a12ebbcc52bbc257bd"
+    },
+    {
+      "path": "src/assets/fonts/Montserrat-ExtraBold.ttf",
+      "sha1": "1e3298f51b4766e2810a4a2c09a2c75c323d5e7e"
     }
   ]
 }

@@ -1,6 +1,6 @@
-import {ReactNode} from 'react';
+import { ReactNode } from 'react';
 
-export type TypographyType = 'plain';
+export type TypographyType = 'h1' | 'plain';
 
 export type TypographyProps = {
   children: ReactNode;
