@@ -132,6 +132,49 @@ Now that you have successfully run the app, let's modify it.
 
 You've successfully run and modified your React Native App. :partying_face:
 
+---
+
+# Backend Project
+
+This guide provides step-by-step instructions for setting up and running the backend project.
+
+1. Go to the `backend` directory.
+   ```sh
+   cd backend
+   ```
+
+2. Install the dependencies.
+   ```sh
+   pip install -r requirements.txt
+   ```
+
+3. Write your credentials in the `.env.local` file inside the `backend` directory.
+   ```sh
+    POSTGRES_USER=your_username
+    POSTGRES_PASSWORD=your_password
+    POSTGRES_DB=your_db_name
+    POSTGRES_HOST=db
+    POSTGRES_PORT=5432
+    ```
+
+4. Run Docker Compose to start the PostgreSQL database.
+   ```sh
+   docker-compose up -d
+   ```
+
+5. Run the migrations.
+   ```sh
+   alembic upgrade head
+   ```
+  
+6. Run the backend server (you can change the port if you want to).
+   ```sh
+    uvicorn main:app --reload --port 8003
+    ```
+7. Go to `http://localhost:8003/docs` to see the API documentation with Swagger UI.
+
+You're all set! :tada:
+
 ### Now what?
 
 - If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
