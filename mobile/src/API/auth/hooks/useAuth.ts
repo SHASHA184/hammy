@@ -9,7 +9,7 @@ import { useState } from 'react';
 const useAuth = () => {
   const [user, setUser] = useState<User | null>(null);
 
-  const signIn = async () => {
+  const login = async () => {
     try {
       await GoogleSignin.hasPlayServices();
       const user = await GoogleSignin.signIn();
@@ -28,7 +28,7 @@ const useAuth = () => {
     }
   };
 
-  return { user, signIn };
+  return { user, login };
 };
 
 export default useAuth;
