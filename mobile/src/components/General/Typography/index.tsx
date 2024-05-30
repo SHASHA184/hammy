@@ -1,11 +1,20 @@
 import { Text } from 'react-native';
-import styles from './styles';
+import { typeStyles, formatStyles } from './styles';
 import { TypographyProps } from './types';
 
-const Typography = ({ children, type }: TypographyProps) => {
-  const typeStyles = styles[type];
+const Typography = ({ children, type, uppercase, italic }: TypographyProps) => {
+  const typeStyle = typeStyles[type];
 
-  return <Text style={typeStyles}>{children}</Text>;
+  return (
+    <Text
+      style={[
+        typeStyle,
+        uppercase && formatStyles.uppercase,
+        italic && formatStyles.italic,
+      ]}>
+      {children}
+    </Text>
+  );
 };
 
 export default Typography;
