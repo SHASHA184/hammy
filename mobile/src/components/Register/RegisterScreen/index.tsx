@@ -22,7 +22,9 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Typography type="h1">Register</Typography>
+      <Typography type="h1" uppercase>
+        Register
+      </Typography>
       <GoogleSigninButton style={styles.googleButton} onPress={handleLogin} />
       <TouchableOpacity onPress={handleCreateAccount}>
         <Typography type="plain">I have account already</Typography>
