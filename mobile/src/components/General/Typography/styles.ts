@@ -1,16 +1,29 @@
 import { StyleSheet } from 'react-native';
+import colors from '../../../theme/colors';
 
-const styles = StyleSheet.create({
+export const typeStyles = StyleSheet.create({
   h1: {
     fontFamily: 'Montserrat-ExtraBold',
     fontSize: 30,
-    color: '#000000',
-    textTransform: 'uppercase',
+    color: colors.black,
   },
   plain: {
     fontFamily: 'ABeeZee-Regular',
     fontSize: 16,
+    color: colors.black,
+  },
+  caption: {
+    fontFamily: 'ABeeZee-Regular',
+    fontSize: 12,
+    color: colors.black,
   },
 });
 
-export default styles;
+export const formatStyles = StyleSheet.create({
+  uppercase: {
+    textTransform: 'uppercase',
+  },
+  italic: {
+    fontStyle: 'italic',
+  },
+});

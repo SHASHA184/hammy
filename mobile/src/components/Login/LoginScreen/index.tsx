@@ -19,7 +19,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Typography type="h1">Login</Typography>
+      <Typography type="h1" uppercase>Login</Typography>
       <GoogleSigninButton style={styles.googleButton} onPress={handleLogin} />
       <TouchableOpacity onPress={handleCreateAccount}>
         <Typography type="plain">I want to create account</Typography>
