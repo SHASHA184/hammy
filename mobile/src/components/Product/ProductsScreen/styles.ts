@@ -5,7 +5,6 @@ import colors from '../../../theme/colors';
 const styles = StyleSheet.create({
   container: {
     width: '90%',
-    margin: 20,
   },
   searchInput: {
     width: '100%',
@@ -13,10 +12,10 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
     borderRadius: 10,
     marginBottom: spacing(4),
-    marginTop: spacing(2),
+    marginTop: spacing(5),
   },
   productsContainer: {
-    marginTop: 30,
+    marginTop: spacing(6),
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
