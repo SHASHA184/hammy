@@ -4,6 +4,7 @@ import { TextInput, View } from 'react-native';
 import colors from '../../../theme/colors';
 import Typography from '../../General/Typography';
 import { RootStackParamList } from '../../Navigation/Stack/types';
+import PaddingContainer from '../../General/PaddingCotainer';
 import ProductCard from '../ProductCard';
 import generateProducts from './generateProducts';
 import styles from './styles';
@@ -21,7 +22,7 @@ const ProductsScreen: React.FC<ProductsScreenProps> = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
+    <PaddingContainer>
       <TextInput
         placeholder="Search products..."
         placeholderTextColor={colors.grey}
@@ -39,7 +40,7 @@ const ProductsScreen: React.FC<ProductsScreenProps> = ({ navigation }) => {
           />
         ))}
       </View>
-    </View>
+    </PaddingContainer>
   );
 };
 

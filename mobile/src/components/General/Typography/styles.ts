@@ -7,10 +7,21 @@ export const typeStyles = StyleSheet.create({
     fontSize: 30,
     color: colors.black,
   },
+  h2: {
+    fontFamily: 'Montserrat-ExtraBold',
+    fontSize: 20,
+    color: colors.black,
+  },
   plain: {
     fontFamily: 'ABeeZee-Regular',
     fontSize: 16,
     color: colors.black,
+  },
+  subtitle: {
+    fontFamily: 'ABeeZee-Regular',
+    fontSize: 20,
+    color: colors.black,
+    fontStyle: 'italic',
   },
   caption: {
     fontFamily: 'ABeeZee-Regular',
@@ -25,5 +36,8 @@ export const formatStyles = StyleSheet.create({
   },
   italic: {
     fontStyle: 'italic',
+  },
+  capitalize: {
+    textTransform: 'capitalize',
   },
 });
