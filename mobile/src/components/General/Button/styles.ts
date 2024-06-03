@@ -3,14 +3,25 @@ import colors from '../../../theme/colors';
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
-    backgroundColor: colors.black,
     height: 50,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     margin: 'auto',
     borderRadius: 10,
+  },
+  contained: {
+    backgroundColor: colors.black,
+    color: colors.white,
+  },
+  outlined: {
+    borderWidth: 1,
+    borderColor: colors.black,
+    backgroundColor: colors.white,
+    color: colors.black,
+  },
+  fullWidth: {
+    width: '100%',
   },
 });
 

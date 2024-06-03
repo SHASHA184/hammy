@@ -1,17 +1,27 @@
 import { TouchableOpacity } from 'react-native';
-import colors from '../../../theme/colors';
 import Typography from '../Typography';
 import styles from './styles';
+import { ButtonProps } from './types';
 
-type ButtonProps = {
-  onPress: () => void;
-  children: string;
-};
+const Button: React.FC<ButtonProps> = ({
+  onPress,
+  children,
+  type = 'contained',
+  fullWidth = true,
+  style,
+}) => {
+  const typeStyles = styles[type];
 
-const Button: React.FC<ButtonProps> = ({ onPress, children }) => {
   return (
-    <TouchableOpacity onPress={onPress} style={styles.container}>
-      <Typography type="plain" uppercase italic color={colors.white}>
+    <TouchableOpacity
+      onPress={onPress}
+      style={[
+        styles.container,
+        typeStyles,
+        fullWidth && styles.fullWidth,
+        style,
+      ]}>
+      <Typography type="plain" uppercase italic color={typeStyles.color}>
         {children}
       </Typography>
     </TouchableOpacity>
