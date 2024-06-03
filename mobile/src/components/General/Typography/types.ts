@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { StyleSheet } from 'react-native';
+import { TextStyle } from 'react-native';
 
 export type TypographyType = 'h1' | 'h2' | 'plain' | 'caption' | 'subtitle';
 
@@ -10,4 +10,5 @@ export type TypographyProps = {
   italic?: boolean;
   capitalize?: boolean;
   color?: string;
+  style?: TextStyle;
 };
