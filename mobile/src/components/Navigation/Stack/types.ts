@@ -3,4 +3,5 @@ export type RootStackParamList = {
   Register: undefined;
   Products: undefined;
   ProductDetails: { id: string };
+  OrderConfirm: undefined;
 };
