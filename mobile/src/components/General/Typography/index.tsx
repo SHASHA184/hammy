@@ -9,6 +9,7 @@ const Typography = ({
   italic,
   color,
   capitalize,
+  style,
 }: TypographyProps) => {
   const typeStyle = typeStyles[type];
 
@@ -20,6 +21,7 @@ const Typography = ({
         italic && formatStyles.italic,
         capitalize && formatStyles.capitalize,
         !!color && { color },
+        style,
       ]}>
       {children}
     </Text>
