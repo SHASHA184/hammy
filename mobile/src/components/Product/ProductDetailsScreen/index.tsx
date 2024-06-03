@@ -3,7 +3,7 @@ import { Image, View } from 'react-native';
 import React from 'react';
 import { RootStackParamList } from '../../Navigation/Stack/types';
 import Typography from '../../General/Typography';
-import PaddingContainer from '../../General/PaddingCotainer';
+import PaddingContainer from '../../General/PaddingContainer';
 import Button from '../../General/Button';
 import FloatingPanel from '../../General/FloatingPanel';
 import styles from './styles';

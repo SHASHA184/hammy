@@ -4,10 +4,11 @@ import { TextInput, View } from 'react-native';
 import colors from '../../../theme/colors';
 import Typography from '../../General/Typography';
 import { RootStackParamList } from '../../Navigation/Stack/types';
-import PaddingContainer from '../../General/PaddingCotainer';
+import PaddingContainer from '../../General/PaddingContainer';
 import ProductCard from '../ProductCard';
 import generateProducts from './generateProducts';
 import styles from './styles';
+import TextField from '../../General/TextField';
 
 type ProductsScreenProps = NativeStackScreenProps<
   RootStackParamList,
@@ -23,11 +24,7 @@ const ProductsScreen: React.FC<ProductsScreenProps> = ({ navigation }) => {
 
   return (
     <PaddingContainer>
-      <TextInput
-        placeholder="Search products..."
-        placeholderTextColor={colors.grey}
-        style={styles.searchInput}
-      />
+      <TextField placeholder="Search products..." />
       <Typography type="h1">Products</Typography>
       <View style={styles.productsContainer}>
         {products.map((product, i) => (
