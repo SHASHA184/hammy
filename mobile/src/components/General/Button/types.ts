@@ -1,4 +1,4 @@
-import { ViewStyle } from 'react-native';
+import { DimensionValue, ViewStyle } from 'react-native';
 
 export type ButtonType = 'contained' | 'outlined';
 export type ButtonProps = {
@@ -7,4 +7,5 @@ export type ButtonProps = {
   type?: ButtonType;
   fullWidth?: boolean;
   style?: ViewStyle;
+  width?: DimensionValue;
 };
