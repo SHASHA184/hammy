@@ -1,7 +1,7 @@
 import { TouchableOpacity, View } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { GoogleSigninButton } from '@react-native-google-signin/google-signin';
-import useAuth from '../../../API/auth/hooks/useAuth';
+import { useAuth } from '../../../redux/hooks';
 import Typography from '../../General/Typography';
 import { RootStackParamList } from '../../Navigation/Stack/types';
 import styles from './styles';
