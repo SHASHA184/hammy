@@ -1,7 +1,7 @@
 import { TouchableOpacity, View } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { GoogleSigninButton } from '@react-native-google-signin/google-signin';
-import useAuth from '../../../API/auth/hooks/useAuth';
+import { useAuth } from '../../../redux/hooks';
 import Typography from '../../General/Typography';
 import { RootStackParamList } from '../../Navigation/Stack/types';
 import styles from './styles';
@@ -12,10 +12,10 @@ type RegisterScreenProps = NativeStackScreenProps<
 >;
 
 const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) => {
-  const { login } = useAuth();
+  const { register } = useAuth();
 
   const handleLogin = async () => {
-    await login();
+    await register();
   };
 
   const handleCreateAccount = () => navigation.navigate('Login');
