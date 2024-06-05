@@ -1,33 +1,40 @@
 from sqlalchemy import Column, Integer, Text, Boolean, ForeignKey
 from sqlalchemy.orm import validates
 from database.base_model import Base
+from sqlalchemy import select
+from utils import verify_password
 import re
 
+
 class User(Base):
-    __tablename__ = 'users'
+    __tablename__ = "user"
 
     id = Column(Integer, primary_key=True)
     name = Column(Text)
     email = Column(Text, unique=True)
-    shipping_address_id = Column(Integer, ForeignKey('shipping_addresses.id'))
+    shipping_address_id = Column(Integer, ForeignKey("shipping_addresses.id"))
     phone_number = Column(Text)
     password = Column(Text)
     is_admin = Column(Boolean, default=False)
+    picture = Column(Text)
 
-    @validates('phone_number')
-    def validate_phone_number(self, key, phone_number):
-        # Implement your phone number validation logic here
-        # Return the validated phone number or raise an exception if it's invalid
-        # Example validation: ensuring the phone number has 10 digits
-        if not re.match(r'^\d{10}$', phone_number):
-            raise ValueError("Phone number must have 10 digits")
-        return phone_number
+    @classmethod
+    async def check_user_exists(cls, db, email):
+        statement = select(cls).where(cls.email == email)
+        result = await db.execute(statement)
+        return result.scalar()
 
-    @validates('email')
-    def validate_email(self, key, email):
-        # Implement your email validation logic here
-        # Return the validated email or raise an exception if it's invalid
-        # Example validation: ensuring the email has a valid format
-        if not re.match(r'^[\w\.-]+@[\w\.-]+\.\w+$', email):
-            raise ValueError("Invalid email format")
-        return email
+    @classmethod
+    async def create(cls, db, user: dict):
+        instance = cls(**user)
+        await instance.save(db)
+        return instance
+    
+    @classmethod
+    async def authenticate(cls, db, email, password):
+        statement = select(cls).where(cls.email == email)
+        result = await db.execute(statement)
+        user = result.scalar()
+        if user is not None and verify_password(password, user.password):
+            return user
+        return None
