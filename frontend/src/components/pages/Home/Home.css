@@ -1,0 +1,79 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Arial', sans-serif;
+  background-color: #f8f9fa;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.landing {
+  background: url('../../../assets/landing.jpeg') no-repeat center center/cover;
+  color: #ffffff;
+  height: calc(100vh - 3.35rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.landing h1 {
+  font-size: 4rem;
+  margin: 0;
+}
+
+.landing p {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+}
+
+.features-section {
+  padding: 4rem 0;
+}
+
+.features {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.feature {
+  background-color: #e3f2fd;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  width: 30%;
+  margin: 1rem;
+  text-align: left;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.feature:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.feature h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #1976d2;
+}
+
+.feature p {
+  font-size: 1rem;
+  color: #555;
+}
+
+@media (max-width: 768px) {
+  .feature {
+    width: 100%;
+    margin: 1rem 0;
+  }
+}
