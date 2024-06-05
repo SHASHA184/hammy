@@ -11,7 +11,7 @@ class Order(Base):
     __tablename__ = 'orders'
 
     id = Column(Integer, primary_key=True)
-    user_id = Column(Integer, ForeignKey('users.id'))
+    user_id = Column(Integer, ForeignKey('user.id'))
     competed = Column(Boolean, default=False)
     sended = Column(Boolean, default=False)
     total_price = Column(Float)
