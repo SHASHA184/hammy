@@ -1,36 +1,46 @@
 import re
 import datetime
-from sqlalchemy import Column, Integer, Boolean, ForeignKey, Float, DateTime
+from sqlalchemy import Column, Integer, Boolean, ForeignKey, Float, DateTime, select
 from sqlalchemy.orm import validates
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from .order_item import OrderItem
 from database.base_model import Base
+from database.schemas.order import OrderSchema, OrderItemSchema
+from typing import List
+
 
 class Order(Base):
-    __tablename__ = 'orders'
+    __tablename__ = "orders"
 
     id = Column(Integer, primary_key=True)
-    user_id = Column(Integer, ForeignKey('user.id'))
+    user_id = Column(Integer, ForeignKey("user.id"))
     competed = Column(Boolean, default=False)
     sended = Column(Boolean, default=False)
     total_price = Column(Float)
     order_time = Column(DateTime, default=datetime.datetime.now)
-    
-    order_items = relationship('OrderItem', backref='order')
 
-    def get_cart_total(self):
-        total = 0
-        for order_item in self.order_items:
-            total += order_item.price * order_item.quantity
-        return total
+    @classmethod
+    async def get(cls, session, order_id):
+        statement = select(cls).where(cls.id == order_id)
+        result = await session.execute(statement)
+        return result.scalar()
     
-    def get_cart_items(self):
-        cart_items = []
-        for order_item in self.order_items:
-            cart_items.append({
-                'product_id': order_item.product_id,
-                'quantity': order_item.quantity,
-                'price': order_item.price
-            })
-        return cart_items
+    @classmethod
+    async def get_user_orders(cls, session, user_id):
+        statement = select(cls).where(cls.user_id == user_id)
+        result = await session.execute(statement)
+        return result.scalars().all()
+    
+    @classmethod
+    async def create(cls, session, order: OrderSchema):
+        order_items = order.order_items
+        order_dict = order.dict()
+        del order_dict["order_items"]
+        order_instance = cls(**order_dict)
+        await order_instance.save(session)
+        for order_item in order_items:
+            order_item.order_id = order_instance.id
+        await OrderItem.create(session, order_items)
+        return order_instance
+    
