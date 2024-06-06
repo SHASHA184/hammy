@@ -1,13 +1,12 @@
 import React from 'react';
-import LoaderKit from 'react-native-loader-kit';
-import { View } from 'react-native';
+import { ActivityIndicator, View } from 'react-native';
 import colors from '../../../theme/colors';
 import styles from './styles';
 
 const Loader = () => {
   return (
     <View style={styles.container}>
-      <LoaderKit style={styles.loader} name="LineScale" color={colors.black} />
+      <ActivityIndicator style={styles.loader} color={colors.black} />
     </View>
   );
 };
