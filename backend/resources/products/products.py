@@ -22,7 +22,7 @@ async def get_products(name: str = None,db: Session = Depends(get_db)):
     return products
 
 
-@router.get("/product/{product_id}", response_model=ProductSchema)
+@router.get("/products/{product_id}", response_model=ProductSchema)
 async def get_product(product_id: int, db: Session = Depends(get_db)):
     product = await Product.get(db, product_id)
     if product is None:
@@ -30,7 +30,7 @@ async def get_product(product_id: int, db: Session = Depends(get_db)):
     return product
 
 
-@router.post("/product_create", response_model=ProductSchema)  # Include response_model
+@router.post("/products/create", response_model=ProductSchema)  # Include response_model
 async def create_product(product: ProductSchema, db: Session = Depends(get_db)):
     product = await Product.create(db, product)
     return product
