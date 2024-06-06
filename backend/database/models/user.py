@@ -38,3 +38,13 @@ class User(Base):
         if user is not None and verify_password(password, user.password):
             return user
         return None
+    
+    @classmethod
+    async def update_user(cls, db, user):
+        statement = select(cls).where(cls.email == user["email"])
+        result = await db.execute(statement)
+        user_instance = result.scalar()
+        for key, value in user.items():
+            setattr(user_instance, key, value)
+        await user_instance.save(db)
+        return user_instance
