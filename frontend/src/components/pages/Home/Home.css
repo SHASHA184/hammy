@@ -22,6 +22,7 @@ body, html {
   justify-content: center;
   align-items: center;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  padding: 1rem;
 }
 
 .landing h1 {
@@ -71,9 +72,26 @@ body, html {
   color: #555;
 }
 
+/* Responsive styles */
 @media (max-width: 768px) {
   .feature {
     width: 100%;
     margin: 1rem 0;
+  }
+
+  .landing h1 {
+    font-size: 2.5rem;
+  }
+
+  .landing p {
+    font-size: 1.2rem;
+  }
+
+  .features-section {
+    padding: 2rem 0;
+  }
+
+  .container {
+    padding: 1rem;
   }
 }
