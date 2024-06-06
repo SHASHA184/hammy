@@ -23,8 +23,10 @@ class Product(Base):
         return instance
 
     @classmethod
-    async def get_all(cls, db):
+    async def get_all(cls, db, name: str = None):
         statement = select(cls)
+        if name:
+            statement = statement.where(cls.name.ilike(f"%{name}%"))
         result = await db.execute(statement)
         return result.scalars().all()
 
