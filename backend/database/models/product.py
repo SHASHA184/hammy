@@ -1,4 +1,5 @@
-from sqlalchemy import Column, Integer, String, Float, ForeignKey, Text, select
+from sqlalchemy import Column, Integer, String, Float, ForeignKey, Text, select, asc, desc
+
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
 from database.schemas.product import ProductSchema
@@ -35,3 +36,13 @@ class Product(Base):
         statement = select(cls).where(cls.id == product_id)
         result = await db.execute(statement)
         return result.scalar()
+
+    @staticmethod
+    async def get_sorted(db, field_to_sort: str, sort_order: str):
+        if sort_order == "asc":
+            statement = select(Product).order_by(asc(getattr(Product, field_to_sort)))
+        else:
+            statement = select(Product).order_by(desc(getattr(Product, field_to_sort)))
+        
+        result = await db.execute(statement)
+        return result.scalars().all()
