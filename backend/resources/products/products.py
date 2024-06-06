@@ -14,8 +14,11 @@ router = APIRouter()
 
 
 @router.get("/products", response_model=List[ProductSchema])
-async def get_products(db: Session = Depends(get_db)):
-    products = await Product.get_all(db)
+async def get_products(name: str = None,db: Session = Depends(get_db)):
+    if name:
+        products = await Product.get_all(db, name=name)
+    else:
+        products = await Product.get_all(db)
     return products
 
 
