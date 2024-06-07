@@ -7,7 +7,7 @@ const Button: React.FC<ButtonProps> = ({
   onPress,
   children,
   type = 'contained',
-  fullWidth = true,
+  fullWidth,
   width,
   style,
 }) => {
@@ -20,7 +20,8 @@ const Button: React.FC<ButtonProps> = ({
         styles.container,
         typeStyles,
         fullWidth && styles.fullWidth,
-        { ...style, width },
+        !!width && { width },
+        style,
       ]}>
       <Typography type="plain" uppercase italic color={typeStyles.color}>
         {children}

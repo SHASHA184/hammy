@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException, Depends, status, APIRouter
+from fastapi import FastAPI, HTTPException, Depends, status, APIRouter, Query
 from sqlalchemy.orm import Session
 from database.base_model import Base
 from database.conn import get_db
@@ -14,20 +14,30 @@ router = APIRouter()
 
 
 @router.get("/products", response_model=List[ProductSchema])
-async def get_products(db: Session = Depends(get_db)):
-    products = await Product.get_all(db)
-    return products
+async def get_products(name: str = None, 
+						sort_by: str = Query(None, regex="^(name|price|created_at)$"),  # Example fields
+						sort_order: str = Query("asc", regex="^(asc|desc)$"),
+						db: Session = Depends(get_db)):
+	if name:
+		products = await Product.get_all(db, name=name)
+	elif sort_by:
+		products = await Product.get_sorted(db, sort_by, sort_order)
+	else:
+		products = await Product.get_all(db)
+	
+
+	return products
 
 
-@router.get("/product/{product_id}", response_model=ProductSchema)
+@router.get("/products/{product_id}", response_model=ProductSchema)
 async def get_product(product_id: int, db: Session = Depends(get_db)):
-    product = await Product.get(db, product_id)
-    if product is None:
-        raise HTTPException(status_code=404, detail="Product not found")
-    return product
+	product = await Product.get(db, product_id)
+	if product is None:
+		raise HTTPException(status_code=404, detail="Product not found")
+	return product
 
 
-@router.post("/product_create", response_model=ProductSchema)  # Include response_model
+@router.post("/products/create", response_model=ProductSchema)  # Include response_model
 async def create_product(product: ProductSchema, db: Session = Depends(get_db)):
-    product = await Product.create(db, product)
-    return product
+	product = await Product.create(db, product)
+	return product

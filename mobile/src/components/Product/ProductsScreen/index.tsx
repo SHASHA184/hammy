@@ -1,14 +1,14 @@
 import React from 'react';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { TextInput, View } from 'react-native';
-import colors from '../../../theme/colors';
+import { View } from 'react-native';
+import { useGetProductsQuery } from '../../../redux/API';
 import Typography from '../../General/Typography';
-import { RootStackParamList } from '../../Navigation/Stack/types';
 import PaddingContainer from '../../General/PaddingContainer';
-import ProductCard from '../ProductCard';
-import generateProducts from './generateProducts';
-import styles from './styles';
 import TextField from '../../General/TextField';
+import Loader from '../../General/Loader';
+import { RootStackParamList } from '../../Navigation/Stack/types';
+import ProductCard from '../ProductCard';
+import styles from './styles';
 
 type ProductsScreenProps = NativeStackScreenProps<
   RootStackParamList,
@@ -16,11 +16,15 @@ type ProductsScreenProps = NativeStackScreenProps<
 >;
 
 const ProductsScreen: React.FC<ProductsScreenProps> = ({ navigation }) => {
-  const products = generateProducts();
+  const { currentData: products = [], isLoading, error } = useGetProductsQuery();
 
-  const handleCardPress = (id: string) => {
+  const handleCardPress = (id: number) => {
     navigation.navigate('ProductDetails', { id });
   };
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <PaddingContainer>
@@ -30,9 +34,9 @@ const ProductsScreen: React.FC<ProductsScreenProps> = ({ navigation }) => {
         {products.map((product, i) => (
           <ProductCard
             key={i}
-            title={product.title}
+            title={product.name}
             price={product.price}
-            imageURL={product.imageURL}
+            imageURL="https://m.media-amazon.com/images/I/71N73mb3xcL._AC_SL1500_.jpg"
             onPress={() => handleCardPress(product.id)}
           />
         ))}
