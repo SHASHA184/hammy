@@ -58,10 +58,7 @@ const ProductDetailsScreen: React.FC<ProductDetailsScreenProps> = ({
         <Typography type="plain">{product.description}</Typography>
 
         <FloatingPanel>
-
           <Button fullWidth onPress={handleAddProduct}>
-          <Button fullWidth onPress={() => navigation.navigate('OrderConfirm')}>
-
             add to cart
           </Button>
         </FloatingPanel>
