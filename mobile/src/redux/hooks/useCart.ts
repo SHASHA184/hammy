@@ -12,8 +12,8 @@ const useCart = () => {
     dispatch(addToCart(product));
   };
 
-  const removeProduct = (product: Product) => {
-    dispatch(removeFromCart(product));
+  const removeProduct = (id: number) => {
+    dispatch(removeFromCart(id));
   };
 
   return { cart, addProduct, removeProduct };
