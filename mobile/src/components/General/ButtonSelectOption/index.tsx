@@ -7,14 +7,18 @@ type ButtonSelectOptionProps = {
   selected: boolean;
   onPress: () => void;
   children: React.ReactNode;
+  active?: boolean;
 };
 
 const ButtonSelectOption: React.FC<ButtonSelectOptionProps> = ({
   children,
   onPress,
+  active,
 }) => {
   return (
-    <TouchableOpacity onPress={onPress} style={styles.container}>
+    <TouchableOpacity
+      onPress={onPress}
+      style={[styles.container, active && styles.active]}>
       <Typography type="plain">{children}</Typography>
     </TouchableOpacity>
   );
