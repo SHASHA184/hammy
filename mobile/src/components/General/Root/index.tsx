@@ -5,6 +5,7 @@ import ProductsScreen from '../../Product/ProductsScreen';
 import Stack from '../../Navigation/Stack';
 import ProductDetailsScreen from '../../Product/ProductDetailsScreen';
 import OrderConfirmScreen from '../../Order/OrderConfirmScreen';
+import CartScreen from '../../Cart/CartScreen';
 
 const Root = () => {
   const { isLoggedIn } = useAuth();
@@ -22,6 +23,11 @@ const Root = () => {
           component={ProductDetailsScreen}
           options={{ headerShown: false }}
           getId={({ params }) => params.id.toString()}
+        />
+        <Stack.Screen
+          name="Cart"
+          component={CartScreen}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name="OrderConfirm"
