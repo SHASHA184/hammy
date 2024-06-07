@@ -21,12 +21,23 @@ const Home = () => {
               <p>Get the best value for your money with our competitive pricing.</p>
             </div>
             <div className="feature">
-              <h2>User Forum</h2>
-              <p>Ask other users of the site for their advice.</p>
+              <h2>Customer Support</h2>
+              <p>Call us and ask a question!</p>
             </div>
           </section>
         </div>
       </div>
+
+      <footer className="footer">
+        <div className="container">
+          <p>&copy; 2024 Hamster Store "Hammy". All rights reserved.</p>
+          <p>Follow us on:
+            <a href="#"> Facebook</a> |
+            <a href="#"> Twitter</a> |
+            <a href="#"> Instagram</a>
+          </p>
+        </div>
+      </footer>
     </div>
   );
 };
