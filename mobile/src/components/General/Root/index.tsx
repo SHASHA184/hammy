@@ -21,6 +21,7 @@ const Root = () => {
           name="ProductDetails"
           component={ProductDetailsScreen}
           options={{ headerShown: false }}
+          getId={({ params }) => params.id.toString()}
         />
         <Stack.Screen
           name="OrderConfirm"
