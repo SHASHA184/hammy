@@ -1,10 +1,11 @@
-type User = {
-  id: string;
-  name: string | null;
+export type User = {
+  id: number;
+  name: string;
   email: string;
-  photo: string | null;
-  familyName: string | null;
-  givenName: string | null;
+  phone_number: string | null;
+  is_admin: boolean;
+  picture: string | null;
+  token: string;
 };
 
 export interface AuthSliceState {
