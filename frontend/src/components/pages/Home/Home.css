@@ -1,3 +1,5 @@
+/* Existing CSS styles */
+
 body, html {
   margin: 0;
   padding: 0;
@@ -72,6 +74,28 @@ body, html {
   color: #555;
 }
 
+/* Footer styles */
+.footer {
+  background-color: #343a40;
+  color: #ffffff;
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.footer p {
+  margin: 0.5rem 0;
+}
+
+.footer a {
+  color: #ffc107;
+  margin: 0 0.5rem;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
 /* Responsive styles */
 @media (max-width: 768px) {
   .feature {
@@ -93,5 +117,13 @@ body, html {
 
   .container {
     padding: 1rem;
+  }
+
+  .footer p {
+    font-size: 0.9rem;
+  }
+
+  .footer a {
+    font-size: 0.9rem;
   }
 }
