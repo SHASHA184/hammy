@@ -63,3 +63,8 @@ async def google_login(user: UserGoogleSchema, db: Session = Depends(get_db)) ->
     except Exception as e:
         logger.error(traceback.format_exc())
         raise HTTPException(status_code=400, detail="Invalid token")
+    
+@router.post("/users/update")
+async def update_user(user: UserSchema, db: Session = Depends(get_db)) -> Union[UserSchema, dict]:
+    user = await User.update_user(db, user.dict())
+    return user
