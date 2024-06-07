@@ -1,6 +1,6 @@
 import React from 'react';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { View } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 import { useGetProductsQuery } from '../../../redux/API';
 import Typography from '../../General/Typography';
 import PaddingContainer from '../../General/PaddingContainer';
@@ -16,7 +16,7 @@ type ProductsScreenProps = NativeStackScreenProps<
 >;
 
 const ProductsScreen: React.FC<ProductsScreenProps> = ({ navigation }) => {
-  const { currentData: products = [], isLoading, error } = useGetProductsQuery();
+  const { currentData: products = [], isLoading } = useGetProductsQuery();
 
   const handleCardPress = (id: number) => {
     navigation.navigate('ProductDetails', { id });
@@ -30,10 +30,13 @@ const ProductsScreen: React.FC<ProductsScreenProps> = ({ navigation }) => {
     <PaddingContainer>
       <TextField placeholder="Search products..." />
       <Typography type="h1">Products</Typography>
+      <TouchableOpacity onPress={() => navigation.navigate('Cart')}>
+        <Typography type="plain">Move on cart</Typography>
+      </TouchableOpacity>
       <View style={styles.productsContainer}>
-        {products.map((product, i) => (
+        {products.map(product => (
           <ProductCard
-            key={i}
+            key={product.id}
             title={product.name}
             price={product.price}
             imageURL="https://m.media-amazon.com/images/I/71N73mb3xcL._AC_SL1500_.jpg"
