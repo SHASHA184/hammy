@@ -24,7 +24,7 @@ const CartScreen: React.FC<CartScreenProps> = ({ navigation }) => {
       <View style={styles.container}>
         <Typography type="h1">Basket</Typography>
         <Typography type="plain" style={styles.price}>
-          Total: $852
+          Total: ${cart.totalPrice.toFixed(2)}
         </Typography>
         <View>
           {cart.products.map(product => (
@@ -32,6 +32,7 @@ const CartScreen: React.FC<CartScreenProps> = ({ navigation }) => {
               <CartProductCard
                 title={product.name}
                 price={product.price}
+                imageURL={product.image}
                 onRemovePress={() => removeProduct(product.id)}
               />
             </View>
