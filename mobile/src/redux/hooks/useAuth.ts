@@ -8,7 +8,6 @@ const useAuth = () => {
     state => state.auth,
   );
 
-
   const isLoggedIn = !!user;
 
   const dispatch = useAppDispatch();

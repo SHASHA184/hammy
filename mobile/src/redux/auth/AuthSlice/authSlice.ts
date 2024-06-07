@@ -24,7 +24,7 @@ const AuthSlice = createSlice({
     });
     builder.addCase(registerUser.fulfilled, (state, { payload }) => {
       state.isLoading = false;
-      state.user = payload.user;
+      state.user = payload;
     });
     builder.addCase(registerUser.rejected, state => {
       state.isLoading = false;
@@ -35,7 +35,7 @@ const AuthSlice = createSlice({
     });
     builder.addCase(loginUser.fulfilled, (state, { payload }) => {
       state.isLoading = false;
-      state.user = payload.user;
+      state.user = payload;
     });
     builder.addCase(loginUser.rejected, state => {
       state.isLoading = false;
