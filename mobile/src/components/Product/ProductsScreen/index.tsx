@@ -16,7 +16,9 @@ type ProductsScreenProps = NativeStackScreenProps<
 >;
 
 const ProductsScreen: React.FC<ProductsScreenProps> = ({ navigation }) => {
-  const { currentData: products = [], isLoading } = useGetProductsQuery();
+  const [searchName, setSearchName] = React.useState('');
+  const { currentData: products = [], isLoading } =
+    useGetProductsQuery(searchName);
 
   const handleCardPress = (id: number) => {
     navigation.navigate('ProductDetails', { id });
@@ -28,7 +30,11 @@ const ProductsScreen: React.FC<ProductsScreenProps> = ({ navigation }) => {
 
   return (
     <PaddingContainer>
-      <TextField placeholder="Search products..." />
+      <TextField
+        placeholder="Search products..."
+        value={searchName}
+        setValue={setSearchName}
+      />
       <Typography type="h1">Products</Typography>
       <TouchableOpacity onPress={() => navigation.navigate('Cart')}>
         <Typography type="plain">Move on cart</Typography>

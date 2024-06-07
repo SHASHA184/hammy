@@ -3,6 +3,9 @@ import TAGS from '../tags';
 import { BASE_URL } from '../constants';
 import { Product } from './types';
 
+const getFilteredProductURL = (name: string) =>
+  name ? `/products?name=${name}` : '/products';
+
 export const ProductAPI = createApi({
   reducerPath: 'ProductAPI',
   baseQuery: fetchBaseQuery({
@@ -14,8 +17,8 @@ export const ProductAPI = createApi({
   }),
   tagTypes: [TAGS.PRODUCTS],
   endpoints: builder => ({
-    getProducts: builder.query<Product[], void>({
-      query: () => '/products',
+    getProducts: builder.query<Product[], string>({
+      query: name => getFilteredProductURL(name),
       providesTags: [TAGS.PRODUCTS],
     }),
     getProductById: builder.query<Product, number>({
