@@ -15,9 +15,6 @@ type ProductDetailsScreenProps = NativeStackScreenProps<
   'ProductDetails'
 >;
 
-const MOCKED_IMAGE_URL =
-  'https://m.media-amazon.com/images/I/71N73mb3xcL._AC_SL1500_.jpg';
-
 const ProductDetailsScreen: React.FC<ProductDetailsScreenProps> = ({
   navigation,
   route: {
@@ -45,7 +42,7 @@ const ProductDetailsScreen: React.FC<ProductDetailsScreenProps> = ({
           borderRadius={15}
           style={styles.productImage}
           source={{
-            uri: MOCKED_IMAGE_URL,
+            uri: product.image,
           }}
         />
         <View style={styles.productTitle}>
