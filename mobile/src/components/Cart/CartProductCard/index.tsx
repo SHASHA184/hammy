@@ -6,6 +6,7 @@ import styles from './styles';
 type CartProductCardProps = {
   title: string;
   price: number;
+  imageURL: string;
   onRemovePress: () => void;
 };
 
@@ -15,13 +16,14 @@ const MOCKED_URI =
 const CartProductCard: React.FC<CartProductCardProps> = ({
   title,
   price,
+  imageURL,
   onRemovePress,
 }) => {
   return (
     <TouchableOpacity style={{ flexDirection: 'row' }}>
       <Image
         source={{
-          uri: MOCKED_URI,
+          uri: imageURL,
         }}
         style={styles.image}
       />

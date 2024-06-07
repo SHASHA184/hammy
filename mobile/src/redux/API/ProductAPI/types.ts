@@ -5,4 +5,5 @@ export type Product = {
   price: number;
   quantity: number;
   category_id: number;
+  image: string;
 };

@@ -45,7 +45,7 @@ const ProductsScreen: React.FC<ProductsScreenProps> = ({ navigation }) => {
             key={product.id}
             title={product.name}
             price={product.price}
-            imageURL="https://m.media-amazon.com/images/I/71N73mb3xcL._AC_SL1500_.jpg"
+            imageURL={product.image}
             onPress={() => handleCardPress(product.id)}
           />
         ))}
