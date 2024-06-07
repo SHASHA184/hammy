@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, Boolean, LargeBinary
+from sqlalchemy import Column, Integer, String, ForeignKey, Boolean
 from sqlalchemy.ext.declarative import declarative_base
 
 from database.base_model import Base
@@ -9,5 +9,5 @@ class ProductImage(Base):
 
     id = Column(Integer, primary_key=True)
     product_id = Column(Integer, ForeignKey('products.id'))
-    blob = Column(LargeBinary, nullable=False)
+    blob = Column(String, nullable=False)
     is_preview = Column(Boolean, default=False)

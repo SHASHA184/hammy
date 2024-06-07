@@ -16,6 +16,7 @@ class Product(Base):
     price = Column(Float, nullable=False)
     quantity = Column(Integer, nullable=True)
     category_id = Column(Integer, ForeignKey("categories.id"), nullable=False)
+    image = Column(String, nullable=False)
 
     @classmethod
     async def create(cls, db, product: ProductSchema):
