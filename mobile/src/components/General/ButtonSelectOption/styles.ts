@@ -9,6 +9,12 @@ const styles = StyleSheet.create({
     backgroundColor: colors.lightGrey,
     borderRadius: 10,
     minWidth: 136,
+    borderWidth: 2,
+    borderStyle: 'solid',
+    borderColor: 'transparent',
+  },
+  active: {
+    borderColor: colors.black,
   },
 });
 
